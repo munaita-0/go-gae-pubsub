@@ -1,8 +1,3 @@
-// Copyright 2015 Google Inc. All rights reserved.
-// Use of this source code is governed by the Apache 2.0
-// license that can be found in the LICENSE file.
-
-// Sample pubsub demonstrates use of the cloud.google.com/go/pubsub package from App Engine flexible environment.
 package main
 
 import (
@@ -11,16 +6,12 @@ import (
 	"log"
 	"net/http"
 	"os"
-
 	"cloud.google.com/go/pubsub"
-
 	"google.golang.org/appengine"
 	appLog "google.golang.org/appengine/log"
-
-	"golang.org/x/net/context"
-
-	"github.com/nlopes/slack"
 	"google.golang.org/appengine/urlfetch"
+	"golang.org/x/net/context"
+	"github.com/nlopes/slack"
 )
 
 var (
@@ -58,8 +49,7 @@ func pushHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	imageUrl := "http://entert.jyuusya-yoshiko.com/wp/wp-content/uploads/2017/07/C7T-zq0V0AAmar0.jpg"
-	sendSlack(r, imageUrl, mustGetenv("CHANNEL_TOKEN_1"))
+	sendSlack(r, mustGetenv("IMAGE_URL_1"), mustGetenv("CHANNEL_TOKEN_1"))
 }
 
 func branchHandler(w http.ResponseWriter, r *http.Request) {
@@ -69,8 +59,7 @@ func branchHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	imageUrl := "https://blog.golang.org/gopher/gopher.png"
-	sendSlack(r, imageUrl, mustGetenv("CHANNEL_TOKEN_2"))
+	sendSlack(r, mustGetenv("IMAGE_URL_2"), mustGetenv("CHANNEL_TOKEN_2"))
 }
 
 func sendSlack(r *http.Request, imageUrl string, channelToken string) {

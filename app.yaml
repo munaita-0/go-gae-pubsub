@@ -6,7 +6,9 @@ env_variables:
   PUBSUB_TOPIC: mytopic
   SLACK_TOKEN: <YOUR_SLACK_TOKEN>
   CHANNEL_TOKEN_1 : <YOUR_CHANNEL_TOKEN_1>
-  CHANNEL_TOKEN_2 : <YOUR_CHANNEL_TOKEN_1>
+  CHANNEL_TOKEN_2 : <YOUR_CHANNEL_TOKEN_2>
+  IMAGE_URL_1: "https://blog.golang.org/gopher/gopher.png"
+  IMAGE_URL_2: "http://entert.jyuusya-yoshiko.com/wp/wp-content/uploads/2017/07/C7T-zq0V0AAmar0.jpg"
 #[END env_variables]
 
 handlers:

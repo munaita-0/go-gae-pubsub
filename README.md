@@ -1,16 +1,16 @@
-## Setup
+## GO_GAE_PUBSUB
+This is GAE Standard application, which enables asynchronyzed tasks with Pub/Sub.
+GAE publish messages to Pub/Sub, and 2 subscriptions reveive them.
+Each subsctiption send messages to Slack Channel, which you set up tokens in app.yml.
 
-Before you can run or deploy this sample, you will need to configure a Pub/Sub topic and subscription:
 
-1. Enable the Cloud Pub/Sub API in the [Google Developers Console](https://console.developers.google.com/project/_/apiui/apiview/pubsub/overview).
+                          / GAE -> send_to_slack_ch
+reqests -> GAE -> Pub/Sub
+                          \ GAE -> send_to_slack_ch
 
-2. Create a topic and subscription.
+## Setup GAE Standard
 
-        $ gcloud alpha pubsub topics create [your-topic-name]
-        $ gcloud alpha pubsub subscriptions create [your-subscription-name] \
-            --topic [your-topic-name] \
-            --push-endpoint \
-                https://[your-app-id].appspot.com/pubsub/push \
-            --ack-deadline 30
+## Setup Pub/Sub with push type
 
-3. Update the environment variables in `app.yaml`.
+## Deploy
+

@@ -19,8 +19,8 @@ import (
 
 	"golang.org/x/net/context"
 
-  "github.com/nlopes/slack"
-  "google.golang.org/appengine/urlfetch"
+	"github.com/nlopes/slack"
+	"google.golang.org/appengine/urlfetch"
 )
 
 var (
@@ -43,7 +43,8 @@ func mustGetenv(k string) string {
 }
 
 type pushRequest struct {
-	Message struct { Attributes map[string]string
+	Message struct {
+		Attributes map[string]string
 		Data       []byte
 		ID         string `json:"message_id"`
 	}
@@ -57,8 +58,8 @@ func pushHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  imageUrl := "http://entert.jyuusya-yoshiko.com/wp/wp-content/uploads/2017/07/C7T-zq0V0AAmar0.jpg"
-  sendSlack(r, imageUrl, mustGetenv("CHANNEL_TOKEN_1"))
+	imageUrl := "http://entert.jyuusya-yoshiko.com/wp/wp-content/uploads/2017/07/C7T-zq0V0AAmar0.jpg"
+	sendSlack(r, imageUrl, mustGetenv("CHANNEL_TOKEN_1"))
 }
 
 func branchHandler(w http.ResponseWriter, r *http.Request) {
@@ -68,30 +69,30 @@ func branchHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-  imageUrl := "https://blog.golang.org/gopher/gopher.png"
-  sendSlack(r, imageUrl, mustGetenv("CHANNEL_TOKEN_2"))
+	imageUrl := "https://blog.golang.org/gopher/gopher.png"
+	sendSlack(r, imageUrl, mustGetenv("CHANNEL_TOKEN_2"))
 }
 
 func sendSlack(r *http.Request, imageUrl string, channelToken string) {
 	ctx := appengine.NewContext(r)
-  api := slack.New(mustGetenv("SLACK_TOKEN"))
-  slack.SetHTTPClient(urlfetch.Client(ctx))
-  params := slack.PostMessageParameters{}
-  attachment := slack.Attachment{
-    Pretext: "some pretext",
-    Text:    "some text",
-    ImageURL: imageUrl,
-  }
-  params.Attachments = []slack.Attachment{attachment}
-  _, _, err := api.PostMessage(channelToken, "title", params)
-  if err != nil {
-    appLog.Errorf(ctx, "%v", err)
-    return
-  }
+	api := slack.New(mustGetenv("SLACK_TOKEN"))
+	slack.SetHTTPClient(urlfetch.Client(ctx))
+	params := slack.PostMessageParameters{}
+	attachment := slack.Attachment{
+		Pretext:  "some pretext",
+		Text:     "some text",
+		ImageURL: imageUrl,
+	}
+	params.Attachments = []slack.Attachment{attachment}
+	_, _, err := api.PostMessage(channelToken, "title", params)
+	if err != nil {
+		appLog.Errorf(ctx, "%v", err)
+		return
+	}
 }
 
 func publishHandler(w http.ResponseWriter, r *http.Request) {
-  topic := getTopic(r)
+	topic := getTopic(r)
 
 	ctx := context.Background()
 
@@ -114,5 +115,5 @@ func getTopic(r *http.Request) *pubsub.Topic {
 		log.Fatal(err)
 	}
 	topic, _ = client.CreateTopic(ctx, mustGetenv("PUBSUB_TOPIC"))
-  return topic
+	return topic
 }

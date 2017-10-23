@@ -4,9 +4,9 @@ runtime: go
 env_variables:
   GOOGLE_CLOUD_PROJECT: suzuki-001
   PUBSUB_TOPIC: mytopic
-  SLACK_TOKEN: <YOUR_SLACK_TOKEN>
-  CHANNEL_TOKEN_1 : <YOUR_CHANNEL_TOKEN_1>
-  CHANNEL_TOKEN_2 : <YOUR_CHANNEL_TOKEN_2>
+  SLACK_TOKEN: xoxp-4821548204-10641042768-259353488082-95173f986481c0d1c7b3df74a04ad265
+  CHANNEL_TOKEN_1 : C7MQBQVR8
+  CHANNEL_TOKEN_2 : C7NUPATT8
   IMAGE_URL_1: "https://blog.golang.org/gopher/gopher.png"
   IMAGE_URL_2: "http://entert.jyuusya-yoshiko.com/wp/wp-content/uploads/2017/07/C7T-zq0V0AAmar0.jpg"
 #[END env_variables]
@@ -14,3 +14,6 @@ env_variables:
 handlers:
 - url: /.*
   script: _go_app
+
+nobuild_files:
+  - vendor/

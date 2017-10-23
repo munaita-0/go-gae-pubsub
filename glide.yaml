@@ -1,0 +1,18 @@
+package: myapp
+import:
+- package: cloud.google.com/go
+  version: ^0.15.0
+  subpackages:
+  - pubsub
+- package: github.com/nlopes/slack
+  version: ^0.1.0
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: google.golang.org/appengine
+  version: ^1.0.0
+  subpackages:
+  - log
+  - urlfetch
+- package: google.golang.org/grpc
+  version: v1.7.0

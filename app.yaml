@@ -1,0 +1,14 @@
+runtime: go
+
+#[START env_variables]
+env_variables:
+  GOOGLE_CLOUD_PROJECT: suzuki-001
+  PUBSUB_TOPIC: mytopic
+  SLACK_TOKEN: <YOUR_SLACK_TOKEN>
+  CHANNEL_TOKEN_1 : <YOUR_CHANNEL_TOKEN_1>
+  CHANNEL_TOKEN_2 : <YOUR_CHANNEL_TOKEN_1>
+#[END env_variables]
+
+handlers:
+- url: /.*
+  script: _go_app
